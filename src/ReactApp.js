@@ -13,8 +13,9 @@ const Button = toReact(
 
 export default function () {
   return (
-    <div className="App">
-      <Button title="Some button"/>
-    </div>
+    <section className="react">
+      <span>React button</span>
+      <Button title="React button"/>
+    </section>
   );
 }

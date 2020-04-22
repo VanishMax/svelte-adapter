@@ -6,7 +6,5 @@
 </script>
 
 <button type="button" {title} on:click={() => dispatch('click', 'clicked')}>
-  🎉
-  <slot/>
-  🎉
+  🎉 <slot/> 🎉
 </button>

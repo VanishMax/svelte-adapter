@@ -1,7 +1,8 @@
 <template>
-  <div class="App">
+  <section class="vue">
+    <span>Vue button</span>
     <Button title="vue-button"/>
-  </div>
+  </section>
 </template>
 
 <script>
