@@ -1,45 +1,45 @@
-import Vue from "vue";
+import Vue from 'vue';
 
-export default (Component, style = {}, tag = "span") =>
-  Vue.component("vue-svelte-adaptor", {
+export default (Component, style = {}, tag = 'span') =>
+  Vue.component('vue-svelte-adaptor', {
     render(createElement) {
       return createElement(tag, {
-        ref: "container",
+        ref: 'container',
         props: this.$attrs,
-        style
+        style,
       });
     },
     data() {
       return {
-        comp: null
+        comp: null,
       };
     },
     mounted() {
       this.comp = new Component({
         target: this.$refs.container,
-        props: this.$attrs
+        props: this.$attrs,
       });
-
+      
       let watchers = [];
-
+      
       for (const key in this.$listeners) {
         this.comp.$on(key, this.$listeners[key]);
         const watchRe = /watch:([^]+)/;
-
+        
         const watchMatch = key.match(watchRe);
-
-        if (watchMatch && typeof this.$listeners[key] === "function") {
+        
+        if (watchMatch && typeof this.$listeners[key] === 'function') {
           watchers.push([
             `${watchMatch[1][0].toLowerCase()}${watchMatch[1].slice(1)}`,
-            this.$listeners[key]
+            this.$listeners[key],
           ]);
         }
       }
-
+      
       if (watchers.length) {
         let comp = this.comp;
         const update = this.comp.$$.update;
-        this.comp.$$.update = function() {
+        this.comp.$$.update = function () {
           watchers.forEach(([name, callback]) => {
             const index = comp.$$.props[name];
             callback(comp.$$.ctx[index]);
@@ -53,5 +53,5 @@ export default (Component, style = {}, tag = "span") =>
     },
     destroyed() {
       this.comp.$destroy();
-    }
+    },
   });

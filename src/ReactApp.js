@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import React, {useState} from 'react';
+import ReactDOM from 'react-dom';
 
-import SvelteButton from "./Button.svelte";
-import toReact from "../react";
+import SvelteButton from './Button.svelte';
+import toReact from '../react';
 
 const Button = toReact(
   SvelteButton,
   {},
-  "div"
+  'div',
 );
 
 
-export default function() {
+export default function () {
   return (
     <div className="App">
-      <Button title="Some button" />
+      <Button title="Some button"/>
     </div>
   );
 }
