@@ -6,9 +6,9 @@
   "repository": "https://github.com/vanishmax/svelte-adapter",
   "license": "MIT",
   "scripts": {
-    "test:build": "pwa export",
-    "test:start": "sirv build -s",
-    "test:watch": "pwa watch"
+    "build": "pwa export",
+    "start": "sirv build -s --port 3000",
+    "watch": "pwa watch"
   },
   "dependencies": {},
   "devDependencies": {
